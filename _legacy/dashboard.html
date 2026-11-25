@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard — Dikky Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+</head>
+<body class="admin-body" id="adminBody">
+  <aside class="admin-sidebar">
+    <a href="index.html" class="logo" aria-label="Home">
+      <span class="logo-mark">D</span>
+    </a>
+    <p class="admin-brand">Dikky Admin</p>
+    <nav>
+      <a class="is-active" href="dashboard.html">Projects</a>
+      <a href="dashboard-edit.html">Tambah Project</a>
+      <a href="index.html" target="_blank" rel="noopener">Lihat Website</a>
+    </nav>
+    <div class="admin-user">
+      <strong id="adminName">Admin</strong>
+      <a href="#" id="logoutBtn">Logout</a>
+    </div>
+  </aside>
+
+  <main class="admin-main">
+    <div class="admin-top">
+      <div>
+        <button class="btn btn-outline admin-mobile-toggle" id="sidebarToggle" type="button">Menu</button>
+        <p class="eyebrow">Dashboard</p>
+        <h1>Projects</h1>
+      </div>
+      <a class="btn btn-accent" href="dashboard-edit.html">+ Project baru</a>
+    </div>
+
+    <div class="alert alert-info">
+      Mode HTML demo — data tersimpan di <strong>localStorage</strong> browser. Nanti bisa diganti backend PHP/API.
+    </div>
+
+    <div class="admin-stats" id="adminStats"></div>
+    <div id="projectsMount"></div>
+  </main>
+
+  <script src="js/projects-data.js"></script>
+  <script>
+    (() => {
+      if (!DikkyStore.requireAuth()) return;
+
+      document.getElementById("adminName").textContent = DikkyStore.currentUser();
+      document.getElementById("logoutBtn").addEventListener("click", (e) => {
+        e.preventDefault();
+        DikkyStore.logout();
+        window.location.href = "login.html";
+      });
+
+      document.getElementById("sidebarToggle").addEventListener("click", () => {
+        document.getElementById("adminBody").classList.toggle("sidebar-open");
+      });
+
+      const projects = DikkyStore.getProjects();
+      const featured = projects.filter((p) => p.featured).length;
+
+      document.getElementById("adminStats").innerHTML = `
+        <article class="stat-card"><strong>${projects.length}</strong><span>Total projects</span></article>
+        <article class="stat-card"><strong>${featured}</strong><span>Featured</span></article>
+        <article class="stat-card"><strong>${new Set(projects.map((p) => p.year)).size}</strong><span>Years covered</span></article>
+      `;
+
+      const mount = document.getElementById("projectsMount");
+
+      if (!projects.length) {
+        mount.innerHTML = `
+          <div class="empty-state">
+            <h2>Belum ada project</h2>
+            <p>Tambahkan project pertama supaya portfolio jadi dinamis.</p>
+            <a class="btn btn-accent" href="dashboard-edit.html">Tambah project</a>
+          </div>
+        `;
+        return;
+      }
+
+      mount.innerHTML = `
+        <div class="admin-table-wrap">
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Project</th>
+                <th>Category</th>
+                <th>Year</th>
+                <th>Featured</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              ${projects
+                .map(
+                  (p) => `
+                <tr>
+                  <td>
+                    <div class="admin-project-cell">
+                      <img src="${p.cover}" alt="" />
+                      <div>
+                        <strong>${p.title}</strong>
+                        <span>${p.slug}</span>
+                      </div>
+                    </div>
+                  </td>
+                  <td>${p.category || "—"}</td>
+                  <td>${p.year || "—"}</td>
+                  <td>
+                    <span class="badge ${p.featured ? "badge-yes" : "badge-no"}">
+                      ${p.featured ? "Yes" : "No"}
+                    </span>
+                  </td>
+                  <td class="admin-actions">
+                    <a href="project-detail.html?slug=${encodeURIComponent(p.slug)}" target="_blank" rel="noopener">View</a>
+                    <a href="dashboard-edit.html?id=${encodeURIComponent(p.id)}">Edit</a>
+                    <button type="button" data-delete="${p.id}">Hapus</button>
+                  </td>
+                </tr>
+              `
+                )
+                .join("")}
+            </tbody>
+          </table>
+        </div>
+      `;
+
+      mount.querySelectorAll("[data-delete]").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          if (!confirm("Hapus project ini?")) return;
+          DikkyStore.remove(btn.getAttribute("data-delete"));
+          window.location.reload();
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login — Dikky Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/pages.css" />
+</head>
+<body class="auth-body">
+  <main class="auth-card">
+    <a href="index.html" class="logo" aria-label="Back home">
+      <span class="logo-mark">D</span>
+    </a>
+    <p class="eyebrow">Admin access</p>
+    <h1>Welcome back</h1>
+    <p class="auth-sub">Masuk untuk mengelola project portfolio secara dinamis.</p>
+
+    <div class="alert alert-error" id="loginError" hidden></div>
+
+    <form class="auth-form" id="loginForm" autocomplete="on">
+      <label>
+        <span>Username</span>
+        <input type="text" name="username" id="username" required value="admin" placeholder="admin" />
+      </label>
+      <label>
+        <span>Password</span>
+        <input type="password" name="password" id="password" required placeholder="••••••••" />
+      </label>
+      <button type="submit" class="btn btn-accent btn-lg" style="width:100%">Login</button>
+    </form>
+
+    <p class="auth-hint">Demo HTML: <strong>admin</strong> / <strong>admin123</strong></p>
+    <a class="text-link" href="index.html">← Kembali ke website</a>
+  </main>
+
+  <script src="js/projects-data.js"></script>
+  <script>
+    (() => {
+      if (DikkyStore.isLoggedIn()) {
+        window.location.href = "dashboard.html";
+        return;
+      }
+
+      const form = document.getElementById("loginForm");
+      const errorEl = document.getElementById("loginError");
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const username = document.getElementById("username").value.trim();
+        const password = document.getElementById("password").value;
+
+        if (DikkyStore.login(username, password)) {
+          window.location.href = "dashboard.html";
+          return;
+        }
+
+        errorEl.hidden = false;
+        errorEl.textContent = "Username atau password salah.";
+      });
+    })();
+  </script>
+</body>
+</html>

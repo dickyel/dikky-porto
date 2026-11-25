@@ -1,0 +1,356 @@
+<?php
+require_once __DIR__ . '/includes/bootstrap.php';
+$featured = get_featured_project();
+$gridProjects = get_grid_projects();
+?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dikky — Designer & Developer</title>
+  <meta name="description" content="Portfolio of Dikky — product designer and developer crafting digital experiences." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <a href="#home" class="logo" aria-label="Dikky home">
+      <span class="logo-mark">D</span>
+    </a>
+
+    <nav class="nav-pill" aria-label="Primary">
+      <a href="#home" class="nav-link is-active">Home</a>
+      <a href="#about" class="nav-link">About</a>
+      <a href="#portfolio" class="nav-link">Portfolio</a>
+      <a href="#contact" class="nav-link">Contact</a>
+    </nav>
+
+    <a href="#contact" class="btn btn-outline btn-talk">
+      Let's talk
+      <span class="btn-icon" aria-hidden="true">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none">
+          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </span>
+    </a>
+
+    <button class="menu-toggle" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <main>
+    <!-- HERO -->
+    <section id="home" class="hero">
+      <div class="hero-card">
+        <div class="hero-content">
+          <p class="hero-greeting reveal">Hey <span class="wave">👋</span> I'm Dikky</p>
+          <h1 class="hero-title reveal">Designer &amp;<br />Developer</h1>
+          <a href="#contact" class="btn btn-accent reveal">Hire Me</a>
+          <p class="hero-sub reveal">
+            Lead Product Design and Developer based in Jakarta,
+            crafting digital products with 8+ years of experience.
+          </p>
+        </div>
+
+        <div class="hero-visual">
+          <img
+            class="hero-photo"
+            src="src/foto.jpeg"
+            alt="Portrait of Dikky"
+          />
+
+          <aside class="exp-card reveal">
+            <span class="exp-label">EXP in:</span>
+            <div class="exp-icons">
+              <span class="exp-icon" title="Figma">
+                <svg viewBox="0 0 24 24" width="18" height="18"><path fill="#F24E1E" d="M5 5.5A3.5 3.5 0 0 1 8.5 2H12v7H8.5A3.5 3.5 0 0 1 5 5.5z"/><path fill="#FF7262" d="M12 2h3.5A3.5 3.5 0 0 1 19 5.5 3.5 3.5 0 0 1 15.5 9H12V2z"/><path fill="#A259FF" d="M5 12a3.5 3.5 0 0 1 3.5-3.5H12V15H8.5A3.5 3.5 0 0 1 5 12z"/><path fill="#1ABCFE" d="M12 8.5h3.5A3.5 3.5 0 1 1 12 12V8.5z"/><path fill="#0ACF83" d="M5 18.5A3.5 3.5 0 0 1 8.5 15H12v3.5A3.5 3.5 0 0 1 8.5 22 3.5 3.5 0 0 1 5 18.5z"/></svg>
+              </span>
+              <span class="exp-icon" title="Framer">
+                <svg viewBox="0 0 24 24" width="16" height="16"><path fill="currentColor" d="M4 2h16v6H12l8 8h-8v6l-8-8V2z"/></svg>
+              </span>
+              <span class="exp-icon" title="Webflow">
+                <svg viewBox="0 0 24 24" width="18" height="18"><path fill="#4353FF" d="M17.9 4H24l-5.2 16h-5.1L17.9 4zM9.4 4l3.9 16H8.2L4.3 8.6 2.1 16H0L3.1 4h6.3z"/></svg>
+              </span>
+              <span class="exp-icon" title="After Effects">
+                <svg viewBox="0 0 24 24" width="18" height="18"><rect width="24" height="24" rx="4" fill="#00005B"/><text x="4" y="17" fill="#D7A3FF" font-size="11" font-family="sans-serif" font-weight="700">Ae</text></svg>
+              </span>
+            </div>
+          </aside>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat reveal">
+            <strong>08+</strong>
+            <span>Years of experience</span>
+          </div>
+          <div class="stat reveal">
+            <strong>120+</strong>
+            <span>Happy clients</span>
+          </div>
+          <div class="stat reveal">
+            <strong>18+</strong>
+            <span>Countries</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about" class="about">
+      <p class="about-status reveal">(Available for Work)</p>
+      <div class="about-copy">
+        <p class="reveal">
+          <span class="tone-dark">Welcome to my portfolio! I'm Dikky,</span>
+          <span class="tone-mute"> a passionate designer &amp; developer who turns ideas into polished digital products.</span>
+          <span class="tone-dark"> I help startups and founders ship interfaces that feel simple,</span>
+          <span class="tone-mute"> memorable, and ready for real users.</span>
+        </p>
+        <a href="#portfolio" class="text-link reveal">See my latest work <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services" class="services">
+      <div class="services-head">
+        <h2 class="section-title reveal">The coolest Services<br />I provide!</h2>
+        <div class="services-aside reveal">
+          <p>From first sketch to shipped product — design systems, websites, and apps built with care.</p>
+          <a href="#contact" class="btn btn-accent">Hire Me</a>
+        </div>
+      </div>
+
+      <div class="service-list" data-accordion>
+        <article class="service-item is-open">
+          <button class="service-trigger" type="button" aria-expanded="true">
+            <span class="service-name">UI/UX Design</span>
+            <span class="service-meta">
+              <img class="service-thumb" src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?w=120&h=120&fit=crop" alt="" />
+              <span class="service-chevron" aria-hidden="true"></span>
+            </span>
+          </button>
+          <div class="service-panel">
+            <div class="service-panel-inner">
+              <div class="service-info">
+                <p>
+                  End-to-end product design — research, wireframes, high-fidelity UI,
+                  and interactive prototypes that keep teams aligned.
+                </p>
+                <div class="service-stats">
+                  <div><strong>200+</strong><span>Web Sites</span></div>
+                  <div><strong>130+</strong><span>Projects Done</span></div>
+                  <div><strong>08+</strong><span>Years Exp</span></div>
+                </div>
+              </div>
+              <div class="service-preview">
+                <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=640&h=800&fit=crop" alt="Mobile UI design preview" />
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="service-item">
+          <button class="service-trigger" type="button" aria-expanded="false">
+            <span class="service-name">Web Development</span>
+            <span class="service-meta">
+              <img class="service-thumb" src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=120&h=120&fit=crop" alt="" />
+              <span class="service-chevron" aria-hidden="true"></span>
+            </span>
+          </button>
+          <div class="service-panel">
+            <div class="service-panel-inner">
+              <div class="service-info">
+                <p>
+                  Fast, accessible frontends with clean architecture — landing pages,
+                  marketing sites, and web apps that perform under pressure.
+                </p>
+                <div class="service-stats">
+                  <div><strong>90+</strong><span>Sites Built</span></div>
+                  <div><strong>40+</strong><span>Web Apps</span></div>
+                  <div><strong>99%</strong><span>Lighthouse</span></div>
+                </div>
+              </div>
+              <div class="service-preview">
+                <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=640&h=800&fit=crop" alt="Web development preview" />
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="service-item">
+          <button class="service-trigger" type="button" aria-expanded="false">
+            <span class="service-name">Motion Design</span>
+            <span class="service-meta">
+              <img class="service-thumb" src="https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=120&h=120&fit=crop" alt="" />
+              <span class="service-chevron" aria-hidden="true"></span>
+            </span>
+          </button>
+          <div class="service-panel">
+            <div class="service-panel-inner">
+              <div class="service-info">
+                <p>
+                  Micro-interactions and brand motion that make interfaces feel alive —
+                  without slowing the experience down.
+                </p>
+                <div class="service-stats">
+                  <div><strong>60+</strong><span>Motion Sets</span></div>
+                  <div><strong>25+</strong><span>Brand Films</span></div>
+                  <div><strong>12+</strong><span>Awards</span></div>
+                </div>
+              </div>
+              <div class="service-preview">
+                <img src="https://images.unsplash.com/photo-1618005198919-d3d4b5a92ead?w=640&h=800&fit=crop" alt="Motion design preview" />
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="service-item">
+          <button class="service-trigger" type="button" aria-expanded="false">
+            <span class="service-name">App Development</span>
+            <span class="service-meta">
+              <img class="service-thumb" src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=120&h=120&fit=crop" alt="" />
+              <span class="service-chevron" aria-hidden="true"></span>
+            </span>
+          </button>
+          <div class="service-panel">
+            <div class="service-panel-inner">
+              <div class="service-info">
+                <p>
+                  Cross-platform mobile experiences focused on clarity, speed,
+                  and conversion — from MVP to polished release.
+                </p>
+                <div class="service-stats">
+                  <div><strong>35+</strong><span>Apps Shipped</span></div>
+                  <div><strong>4.8</strong><span>Avg Rating</span></div>
+                  <div><strong>1M+</strong><span>Downloads</span></div>
+                </div>
+              </div>
+              <div class="service-preview">
+                <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=640&h=800&fit=crop" alt="App development preview" />
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO -->
+    <section id="portfolio" class="portfolio">
+      <div class="portfolio-head">
+        <h2 class="section-title reveal">Check out our<br />awesome showcase!</h2>
+        <a href="#contact" class="text-link reveal">View all work <span aria-hidden="true">↗</span></a>
+      </div>
+
+      <?php if ($featured): ?>
+      <article class="showcase-card reveal">
+        <img
+          class="showcase-bg"
+          src="<?= e($featured['cover'] ?? '') ?>"
+          alt="<?= e($featured['title'] ?? '') ?>"
+        />
+        <div class="showcase-overlay"></div>
+        <div class="showcase-content">
+          <p class="showcase-tag"><?= e($featured['category'] ?? '') ?></p>
+          <h3><?= e($featured['title'] ?? '') ?></h3>
+        </div>
+        <a href="project.php?slug=<?= e(urlencode($featured['slug'] ?? '')) ?>" class="showcase-cta" aria-label="View case study">
+          <span>View<br />Case</span>
+        </a>
+      </article>
+      <?php endif; ?>
+
+      <?php if ($gridProjects): ?>
+      <div class="project-grid">
+        <?php foreach ($gridProjects as $project): ?>
+        <a class="project-card reveal" href="project.php?slug=<?= e(urlencode($project['slug'] ?? '')) ?>">
+          <img src="<?= e($project['cover'] ?? '') ?>" alt="<?= e($project['title'] ?? '') ?>" />
+          <div class="project-info">
+            <h3><?= e($project['title'] ?? '') ?></h3>
+            <p><?= e($project['category'] ?? '') ?></p>
+          </div>
+        </a>
+        <?php endforeach; ?>
+      </div>
+      <?php endif; ?>
+    </section>
+
+    <!-- TESTIMONIALS -->
+    <section class="testimonials" aria-label="Testimonials">
+      <div class="marquee" aria-hidden="true">
+        <div class="marquee-track">
+          <span>TESTIMONIALS</span><span>•</span>
+          <span>TESTIMONIALS</span><span>•</span>
+          <span>TESTIMONIALS</span><span>•</span>
+          <span>TESTIMONIALS</span><span>•</span>
+          <span>TESTIMONIALS</span><span>•</span>
+          <span>TESTIMONIALS</span><span>•</span>
+        </div>
+      </div>
+
+      <div class="testimonial-row">
+        <article class="t-card">
+          <p>“Dikky turned our messy brief into a product people actually love using. Clear, fast, and sharp.”</p>
+          <div class="t-author">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&h=80&fit=crop&crop=faces" alt="" />
+            <div>
+              <strong>Sarah Mitchell</strong>
+              <span>CEO, Northlane</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="t-card is-featured">
+          <p>“Working with Dikky felt like adding a design partner, not a freelancer. The UI quality raised our whole brand.”</p>
+          <div class="t-visual">
+            <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=400&h=280&fit=crop" alt="Product still" />
+          </div>
+          <div class="t-author">
+            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&h=80&fit=crop&crop=faces" alt="" />
+            <div>
+              <strong>James Carter</strong>
+              <span>Founder, Voltgear</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="t-card">
+          <p>“From wireframes to launch, every detail was intentional. Our conversion rate jumped in the first month.”</p>
+          <div class="t-author">
+            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=80&h=80&fit=crop&crop=faces" alt="" />
+            <div>
+              <strong>Amina Rahman</strong>
+              <span>CPO, Softly</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact">
+      <div class="contact-card reveal">
+        <p class="contact-eyebrow">Have a project in mind?</p>
+        <h2>Let's build something<br />worth shipping.</h2>
+        <a href="mailto:hello@dikky.dev" class="btn btn-accent btn-lg">Start a conversation</a>
+        <div class="contact-links">
+          <a href="https://dribbble.com" target="_blank" rel="noopener">Dribbble</a>
+          <a href="https://linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://github.com" target="_blank" rel="noopener">GitHub</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span id="year"></span> Dikky. All rights reserved.</p>
+    <p>Designed with intent · Built for founders</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

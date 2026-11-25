@@ -1,0 +1,73 @@
+<?php
+
+namespace Database\Seeders;
+
+use App\Models\Project;
+use Illuminate\Database\Seeder;
+
+class ProjectSeeder extends Seeder
+{
+    public function run(): void
+    {
+        $projects = [
+            [
+                'title' => 'Voltgear EV Tracking Mobile App',
+                'slug' => 'voltgear-ev-tracking',
+                'category' => 'Mobile App · Product Design',
+                'client' => 'Voltgear',
+                'year' => '2025',
+                'cover' => 'https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=1600&h=900&fit=crop',
+                'summary' => 'An EV tracking experience that helps riders monitor battery, routes, and vehicle health in real time.',
+                'description' => "Voltgear needed a mobile product that felt as sharp as their hardware. I led product design from research to high-fidelity UI, focusing on glanceable battery data, trip history, and a calm dark interface built for night rides.\n\nThe result is a tracking app with clear hierarchy, fast status checks, and a case-study ready visual system that scales across iOS and Android.",
+                'tags' => ['UI/UX', 'Mobile', 'Product Design'],
+                'gallery' => [
+                    'https://images.unsplash.com/photo-1558981806-ec527fa84c39?w=1200&h=800&fit=crop',
+                    'https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=1200&h=800&fit=crop',
+                    'https://images.unsplash.com/photo-1551650975-87deedd944c3?w=1200&h=800&fit=crop',
+                ],
+                'featured' => true,
+            ],
+            [
+                'title' => 'Finora Analytics',
+                'slug' => 'finora-analytics',
+                'category' => 'Dashboard · SaaS',
+                'client' => 'Finora',
+                'year' => '2024',
+                'cover' => 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=900&h=700&fit=crop',
+                'summary' => 'A SaaS analytics dashboard that turns dense financial data into decisions founders can act on.',
+                'description' => "Finora's previous dashboard was packed but hard to scan. I redesigned information architecture, charts, and filters so revenue, churn, and cohort insights feel immediate.\n\nThe interface uses a quiet layout with strong typography and progressive disclosure — power users get depth without overwhelming first-time visitors.",
+                'tags' => ['Dashboard', 'SaaS', 'Web'],
+                'gallery' => [
+                    'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&h=800&fit=crop',
+                    'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&h=800&fit=crop',
+                    'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1000&h=700&fit=crop&q=80',
+                ],
+                'featured' => false,
+            ],
+            [
+                'title' => 'Nord Commerce',
+                'slug' => 'nord-commerce',
+                'category' => 'Branding · E-commerce',
+                'client' => 'Nord',
+                'year' => '2024',
+                'cover' => 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=900&h=700&fit=crop',
+                'summary' => 'Brand and storefront design for a modern commerce brand with a clean northern aesthetic.',
+                'description' => "Nord wanted an e-commerce presence that felt premium without becoming cold. I shaped the visual identity, product pages, and shopping flow around spacious layouts, soft contrast, and confident product photography.\n\nConversion-focused details — sticky buy actions, clearer variants, and trust blocks — shipped alongside the brand system.",
+                'tags' => ['Branding', 'E-commerce', 'Web'],
+                'gallery' => [
+                    'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1200&h=800&fit=crop',
+                    'https://images.unsplash.com/photo-1445205170230-053b83016050?w=1200&h=800&fit=crop',
+                    'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1000&h=700&fit=crop&q=60',
+                ],
+                'featured' => false,
+            ],
+        ];
+
+        foreach ($projects as $project) {
+            Project::query()->updateOrCreate(
+                ['slug' => $project['slug']],
+                $project
+            );
+        }
+    }
+}
